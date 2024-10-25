@@ -61,7 +61,7 @@ function renderCourseDetails(coursIndex) {
 
     const header = document.createElement('header');
     const logo = document.createElement('img');
-    logo.src = 'https://prod-files-secure.s3.us-west-2.amazonaws.com/cabb3a88-2e2d-4113-a7fd-1e5d0ebd235a/8458caea-2a4c-4aad-86e8-f6afb1de085c/logo_ynov.png';
+    logo.src = 'logo.png';
     logo.alt = 'Logo Ynov';
     logo.style.cursor = 'pointer';
     logo.onclick = () => location.hash = '#';
