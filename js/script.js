@@ -20,7 +20,7 @@ function renderHomePage() {
     app.innerHTML = '';
     const header = document.createElement('header');
     const logo = document.createElement('img');
-    logo.src = 'ynov.jpg';
+    logo.src = 'logo.png';
     logo.alt = 'Logo Ynov';
     logo.style.cursor = 'pointer';
     logo.onclick = () => location.hash = '#';
@@ -90,16 +90,19 @@ function renderCourseDetails(coursIndex) {
 }
 
 function router() {
-    const hash = location.hash;
-    if (!hash || hash === '#') {
+    const hash = location.hash || '#';
+    
+    if (hash === '#') {
         renderHomePage();
-    } else if (hash.startsWith('#cours-')) {
-        const coursIndex = parseInt(hash.split('-')[1], 10);
-        if (!isNaN(coursIndex) && coursIndex < coursData.length) {
+        return;
+    }
+
+    const coursIndex = parseInt(hash.replace('#cours-', ''), 10);
+    
+    if (Number.isInteger(coursIndex) && coursIndex >= 0 && coursIndex < coursData.length) {
         renderCourseDetails(coursIndex);
-        } else {
+    } else {
         renderHomePage();
-        }
     }
 }
 
